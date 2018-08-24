@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="Game.js"></script>
+    <ink rel="stylesheet" href="main.css"></ink>
+
+</head>
+
+<body>
+
+    <h1>Tic Tac Toe!</h1>
+    <div ng-app="myGame" ng-controller="GameController">
+        <div>
+            <button class="btn-primary btn-lg" ng-repeat="cell in board[0]" ng-disabled="checkForEndOfGame();" ng-click="move(cell);">{{ cell.value }}</button>
+        </div>
+        <div>
+            <button class="btn-primary btn-lg" ng-repeat="cell in board[1]" ng-disabled="checkForEndOfGame();" ng-click="move(cell);">{{ cell.value }}</button>
+        </div>
+        <div>
+            <button class="btn-primary btn-lg" ng-repeat="cell in board[2]" ng-disabled="checkForEndOfGame();" ng-click="move(cell);">{{ cell.value }}</button>
+        </div>
+        <p>
+            <span ng-hide="winner || draw">Current Player: {{ currentPlayer }}</span>
+            <span ng-show="winner">Player {{ currentPlayer }} won!</span>
+            <span ng-show="draw">Oops! its a draw</span>
+            <br><span ng-show="cellTaken">This space is taken, please choose again!</span>
+        </p>
+
+        <button class="btn btn-success btn-large" ng-click="reset();">New Game</button>
+
+    </div>
+
+   
+</body>
+
+</html>
